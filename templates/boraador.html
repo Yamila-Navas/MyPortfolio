@@ -1,0 +1,32 @@
+
+
+<!--esta es la imagen de hacerca de mi que elimine -->
+<img src="static/img/programadora.png" alt="animacion" border="0" class="achicar-imagen">
+
+<!--este es el apartado de tecnologias que elimine-->
+<li><a href="#facts" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Tecnologias</span></a></li>
+    <!-- ======= Facts Section ======= -->
+    <section id="facts" class="facts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Tecnologias</h2>
+          <p>Estas son las tecnologias principales en las que eh profundizado y construido mis proyectos</p>
+        </div>
+
+        <div class="row  align-items-center justify-content-center">
+
+          {% for technology in technologies %}
+          <div class="col-lg-2 col-md-3 col-4 mt-5 mt-md-0 mt-lg-3">
+            <div class="count-box">
+              {% if technology.miniatura %}
+              <i class="bi"><img src="{{technology.miniatura.url}}"  width="60" height="60" alt="..."></i>
+              {% endif %}
+              <h5>{{technology.nombre}} </h5>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section><!-- End Facts Section -->
