@@ -31,8 +31,9 @@ class Actividad(models.Model):
     titulo = models.CharField(max_length = 50, blank=False, null=False)
     fecha = models.TimeField(blank=True, null=True)
     descripcion = RichTextField()
-    link = models.CharField(max_length = 200, blank=True, null=True)
-    link_articulo = models.CharField(max_length = 200, blank=True, null=True)
+    git_hub = models.CharField(max_length = 200, blank=True, null=True)
+    web = models.CharField(max_length = 200, blank=True, null=True)
+    articulo = models.CharField(max_length = 200, blank=True, null=True)
     imagen = models.ImageField(upload_to='actividad', blank=True, null=True)
 
     class Meta:

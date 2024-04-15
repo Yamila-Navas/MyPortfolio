@@ -157,12 +157,16 @@
                         <p class="card-text">{{project.descripcion|safe}}</p>
 
                         <div  style="display: flex; align-items: flex-end;">
-                          {% if project.link %}
-                          <small class="text-body-secondary"><a href="{{project.link}} " target="_blank">Repocitorio en Git-Hub</a></small>
+                          {% if project.git_hub %}
+                          <small class="text-body-secondary"><a href="{{project.git_hub}} " target="_blank">Repocitorio en Git-Hub</a></small>
                           {% endif %}
-                          {% if project.link_articulo %}
+                          {% if project.web %}
                           <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> 
-                          <small class="text-body-secondary"><a href="{{project.link_articulo}} " target="_blank">Leer el articulo en Medium</a></small>
+                          <small class="text-body-secondary"><a href="{{project.web}} " target="_blank">Demostración</a></small>
+                          {% endif %}
+                          {% if project.articulo %}
+                          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+                          <small class="text-body-secondary"><a href="{{project.articulo}} " target="_blank">Leer el articulo en Medium</a></small>
                           {% endif %}
                         </div>
 
