@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Tecnologia, Datos, Actividad
+from .models import Mensaje, Tecnologia, Datos, Actividad
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.conf import settings
-from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -41,6 +40,8 @@ def enviar_mensaje(request):
             'email': email
         })
 
+        remitente = email
+    
         email = EmailMessage(
             asunto,
             template,
@@ -50,8 +51,15 @@ def enviar_mensaje(request):
         
         email.fail_silently=False
         
-        email.send()
+        try:
+            email.send()
+            return HttpResponse('OK')
+        
+        except Exception as e:
+            print("Error al enviar el correo electrónico: %s", e)
+            mensaje = Mensaje(nombre=nombre, asunto=asunto, mensaje=mensaje, email=remitente)
+            mensaje.save()
+            return HttpResponse('OK')
 
-        return HttpResponse('OK')
     else:
         return HttpResponse('Ha ocurrido un error al enviar el formulario.')

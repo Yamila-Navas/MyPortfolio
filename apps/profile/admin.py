@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Datos, Tecnologia, Actividad
+from .models import Datos, Tecnologia, Actividad,  Mensaje
 
 class DatosAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
@@ -14,8 +14,13 @@ class DatosAdmin(admin.ModelAdmin):
         return True
 
 
+class MensajeAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'asunto', 'visto')
+    readonly_fields = ('nombre', 'asunto','mensaje', 'email')
+
 
 admin.site.register(Datos, DatosAdmin)
 admin.site.register(Tecnologia)
 admin.site.register(Actividad)
+admin.site.register(Mensaje, MensajeAdmin)
 
