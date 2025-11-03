@@ -67,7 +67,7 @@
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
       <h1>Yamila Soledad Navas</h1>
-      <p>Soy <span class="typed" data-typed-items="Desarrolladora, Python"></span></p>
+      <p>Soy <span class="typed" data-typed-items="Desarrolladora, Web"></span></p>
       <div class="social-links">
         
         <a href="{{profile.linkedin}}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
@@ -86,7 +86,28 @@
 
         <div class="section-title">
           <h2>Sobre mí</h2>
-          <p>{{profile.descripcion|safe}} </p>
+          <!-- <p>{{profile.descripcion|safe}} </p> -->
+        </div>
+
+
+
+        <div class="card mb-3" style="max-width: 100%;">
+          <div class="row no-gutters">
+            <div class="col-md-4"  style="max-height: 400px; padding: 10px 0px;">
+              {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" class="img-fluid rounded-start" style="width: 100%; height: 100%;" alt="...">
+              {% endif %}
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+              <div class="card-body">
+                <h5 class="card-title">Hola, soy Yamila 👋🏼</h5>
+                <p class="card-text">{{profile.descripcion|safe}}</p>
+
+
+                
+              </div>
+            </div>
+          </div>
         </div>
 
        
@@ -124,8 +145,56 @@
     </section><!-- End Facts Section -->
 
 
+  
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      
+      <div class="container" data-aos="fade-up">
 
-    
+        <div class="section-title">
+          <h2>Mi proyecto estrella</h2>
+          <p>¡Presento mi obra principal, una mezcla entre código y creatividad!</p>
+        </div>
+
+        <div class="row">
+
+          <div class="card mb-3" style="max-width: 100%;">
+            <div class="row no-gutters">
+              <div class="col-md-4"  style="max-height: 400px; padding: 10px 0px;">
+                {% if main_project.imagen %}
+                  <img src="{{ main_project.imagen.url }}" class="img-fluid rounded-start" style="width: 100%; height: 100%;" alt="...">
+                {% endif %}
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ main_project.titulo }}</h5>
+                  <p class="card-text">{{ main_project.descripcion|safe }}</p>
+
+
+                  <div style="display: flex; align-items: flex-end;">
+                    {% if main_project.git_hub %}
+                    <small class="text-body-secondary"><a href="{{ main_project.git_hub }}" target="_blank">Repositorio en GitHub</a></small>
+                    {% endif %}
+                    {% if main_project.web %}
+                    
+                    <small class="text-body-secondary"><a href="{{ main_project.web }}" target="_blank">Hace click en el enlace para ir a probar  Code Trivia Game.</a></small>
+                    {% endif %}
+                    {% if main_project.articulo %}
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <small class="text-body-secondary"><a href="{{ main_project.articulo }}" target="_blank">Leer el artículo en Medium</a></small>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+           
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio section-bg">
@@ -133,8 +202,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Proyectos</h2>
-          <p>¡Bienvenido a mi espacio de proyectos en desarrollo! Aquí encontrarás proyectos en los que actualmente estoy trabajando. Desde juegos hasta aplicaciones web, cada proyecto refleja mi pasión por la creación de soluciones innovadoras y emocionantes. <br> ¡Echa un vistazo y descubre lo que está en proceso!</p>
+          <h2>Otros Proyectos</h2>
+          <p>¡Bienvenido a mi espacio de proyectos en desarrollo! Aquí encontrarás proyectos en los que actualmente estoy trabajando. Desde juegos hasta aplicaciones web, cada proyecto refleja mi pasión por la creación de soluciones innovadoras y emocionantes.</p>
         </div>
 
         <div class="row">
@@ -219,35 +288,7 @@
             </div>
           </div>
 
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="{% url "enviar-mensaje" %}" method="POST" role="form" class="php-email-form">
-              
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Tu Nombre" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Tu Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">cargando</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Tu mensaje ha sido enviado. ¡Gracias!</div>
-              </div>
-              
-              <div class="text-center"><button type="submit">Enviar mensaje</button></div>
-            </form>
-
-          </div>
-
+         
         </div>
 
       </div>

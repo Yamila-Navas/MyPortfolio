@@ -5,6 +5,7 @@ class Datos(models.Model):
     nombre = models.CharField(max_length = 10, blank=False, null=False)
     apellido = models.CharField(max_length = 10, blank=False, null=False)
     descripcion = RichTextField()
+    photo = models.ImageField(upload_to='photo-profile', blank=True, null=True)
     git_hub = models.CharField(max_length = 150, blank=True, null=True)
     linkedin = models.CharField(max_length = 200, blank=True, null=True)
     cv = models.FileField(upload_to='pdfs', blank=True, null=True)

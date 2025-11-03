@@ -9,13 +9,18 @@ from django.views.decorators.csrf import csrf_exempt
 
 def index(req):
     profile = Datos.objects.get(id=1)
-    project = Actividad.objects.all()
+    project = Actividad.objects.exclude(titulo = 'Code Trivia Game')
     technologies = Tecnologia.objects.all()
+
+    main_project = Actividad.objects.get(titulo = 'Code Trivia Game')
+
+    print(main_project)
 
     ctx = {
         'profile' : profile,
         'projects': project,
         'technologies': technologies,
+        'main_project' : main_project
     }
 
     return render(req, 'index.html', ctx)
