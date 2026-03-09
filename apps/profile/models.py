@@ -30,12 +30,14 @@ class Tecnologia(models.Model):
 
 class Actividad(models.Model):
     titulo = models.CharField(max_length = 50, blank=False, null=False)
+    sub_titulo = models.CharField(max_length = 500, blank=True, null=True)
     fecha = models.TimeField(blank=True, null=True)
     descripcion = RichTextField()
     git_hub = models.CharField(max_length = 200, blank=True, null=True)
     web = models.CharField(max_length = 200, blank=True, null=True)
     articulo = models.CharField(max_length = 200, blank=True, null=True)
     imagen = models.ImageField(upload_to='actividad', blank=True, null=True)
+    tecnoloias = models.ManyToManyField(Tecnologia, related_name='tecnologias', blank=True)
 
     class Meta:
         verbose_name = 'actividad'
