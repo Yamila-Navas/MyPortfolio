@@ -30,9 +30,10 @@ class Tecnologia(models.Model):
 
 class Actividad(models.Model):
     titulo = models.CharField(max_length = 50, blank=False, null=False)
-    sub_titulo = models.CharField(max_length = 500, blank=True, null=True)
+    sub_titulo = models.TextField(max_length = 500, blank=True, null=True)
+    descripcion = RichTextField(blank=True, null=True)
     fecha = models.TimeField(blank=True, null=True)
-    descripcion = RichTextField()
+    
     git_hub = models.CharField(max_length = 200, blank=True, null=True)
     web = models.CharField(max_length = 200, blank=True, null=True)
     articulo = models.CharField(max_length = 200, blank=True, null=True)
@@ -45,18 +46,6 @@ class Actividad(models.Model):
 
     def __str__(self):
         return self.titulo
-    
-
-class Mensaje(models.Model):
-    visto = models.BooleanField(default='False')
-    nombre = models.CharField(max_length = 50, blank=True, null=True)
-    asunto = models.CharField(max_length = 300, blank=True, null=True)
-    mensaje = models.TextField(max_length = 3000, blank=True, null=True)
-    email = models.CharField(max_length = 200, blank=True, null=True)
-
-    def __str__(self):
-        return self.nombre
-    
 
 
 
